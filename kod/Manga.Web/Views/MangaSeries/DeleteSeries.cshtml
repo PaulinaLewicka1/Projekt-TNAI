@@ -1,7 +1,7 @@
-﻿@model Manga.Model.Entities.MangaSeries
+@model Manga.Model.Entities.MangaSeries
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "DeleteSeries";
 }
 
 <h1>Usuwanie</h1>
@@ -36,7 +36,7 @@
             @Html.DisplayFor(model => model.Publisher.Name)
         </dd>
     </dl>
-    <form asp-action="Delete">
+    <form asp-action="DeleteSeries">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Usuń" class="btn btn-danger" /> |
         <a asp-action="Index">Powrót do listy</a>
