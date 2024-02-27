@@ -50,7 +50,7 @@ namespace Manga.Web.Controllers
         [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> 
-            Publishers([Bind("Id,Name,Website")] Publisher publisher)
+            CreatePublishers([Bind("Id,Name,Website")] Publisher publisher)
         {
             ModelState["MangaSeries"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
             if (ModelState.IsValid)
