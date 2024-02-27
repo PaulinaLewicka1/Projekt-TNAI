@@ -1,7 +1,7 @@
-﻿@model Manga.Model.Entities.MangaSeries
+@model Manga.Model.Entities.MangaSeries
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "DetailsSeries";
 }
 
 <h1>Szczegóły</h1>
@@ -39,7 +39,7 @@
 <div>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a>
+        <a asp-action="EditSeries" asp-route-id="@Model?.Id">Edytuj</a>
     }
     <a asp-action="Index">Powrót do listy</a>
 </div>
