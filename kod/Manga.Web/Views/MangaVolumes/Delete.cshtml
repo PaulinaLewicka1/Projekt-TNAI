@@ -1,0 +1,62 @@
+﻿@model Manga.Model.Entities.MangaVolume
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Usuwanie</h1>
+<h3>Usuwanie jest nieodwracalne. Czy chcesz usunąć?</h3>
+<div>
+    <h4>Tomy</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nazwa serii
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            ISBN
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+        <dt class="col-sm-2">
+            Autor/Autorzy
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Authors)
+        </dd>
+        <dt class="col-sm-2">
+            Opis
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Numer tomu
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VolumeNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Data (rok) wydania tomu
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class="col-sm-2">
+            Seria
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Series.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Powrót do listy</a>
+    </form>
+</div>

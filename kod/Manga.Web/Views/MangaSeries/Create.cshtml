@@ -1,0 +1,52 @@
+﻿@model Manga.Model.Entities.MangaSeries
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Stwórz</h1>
+
+<h4>Seria</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nazwa </label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeriesISBN" class="control-label">ISBN serii </label>
+                <input asp-for="SeriesISBN" class="form-control" />
+                <span asp-validation-for="SeriesISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Completed" class="control-label">Zakończona</label>
+                <select asp-for="Completed" class="form-control">
+                    <option value="true">Tak</option>
+                    <option value="false">Nie</option>
+                </select>
+                <span asp-validation-for="Completed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublisherId" class="control-label">Wydawnictwo</label>
+                <select asp-for="PublisherId" class="form-control" asp-items="ViewBag.PublisherId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Powrót do listy</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,64 @@
+﻿@model Manga.Model.Entities.MangaVolume
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Stwórz</h1>
+
+<h4>Tom mangi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nazwa </label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ISBN" class="control-label">ISBN </label>
+                <input asp-for="ISBN" class="form-control" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Authors" class="control-label">Autor/Autorzy </label>
+                <input asp-for="Authors" class="form-control" />
+                <span asp-validation-for="Authors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Opis </label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VolumeNumber" class="control-label">Numer tomu </label>
+                <input asp-for="VolumeNumber" class="form-control" />
+                <span asp-validation-for="VolumeNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label">Rok wydania </label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MangaSeriesId" class="control-label">Seria</label>
+                <select asp-for="MangaSeriesId" class="form-control" asp-items="ViewBag.MangaSeriesId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Powrót do listy</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
