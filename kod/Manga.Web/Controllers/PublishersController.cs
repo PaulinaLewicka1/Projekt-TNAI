@@ -1,4 +1,4 @@
-﻿using Manga.Model;
+using Manga.Model;
 using Manga.Model.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +22,7 @@ namespace Manga.Web.Controllers
                         Problem("Entity set 'AppDbContext.Publisers'  is null.");
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> DetailsPublishers(int? id)
         {
             if (id == null || _context.Publishers == null)
             {
@@ -40,7 +40,7 @@ namespace Manga.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Create()
+        public IActionResult CreatePublishers()
         {
             return View();
         }
@@ -49,7 +49,8 @@ namespace Manga.Web.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
 
-        public async Task<IActionResult> Create([Bind("Id,Name,Website")] Publisher publisher)
+        public async Task<IActionResult> 
+            Publishers([Bind("Id,Name,Website")] Publisher publisher)
         {
             ModelState["MangaSeries"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
             if (ModelState.IsValid)
@@ -62,7 +63,7 @@ namespace Manga.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> EditPublishers(int? id)
         {
             if (id == null || _context.Publishers == null)
             {
@@ -80,7 +81,7 @@ namespace Manga.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Website")] Publisher publisher)
+        public async Task<IActionResult> EditPublishers(int id, [Bind("Id,Name,Website")] Publisher publisher)
         {
             if (id != publisher.Id)
             {
@@ -112,7 +113,7 @@ namespace Manga.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> DeletePublishers(int? id)
         {
             if (id == null || _context.Publishers == null)
             {
@@ -129,7 +130,7 @@ namespace Manga.Web.Controllers
             return View(publisher);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeletePublishers")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -139,7 +140,7 @@ namespace Manga.Web.Controllers
                 return Problem("Entity set 'AppDbContext.Publishers'  is null.");
             }
             var publisher = await _context.Publishers.FindAsync(id);
-            if (publisher != null)
+                        if (publisher != null)
             {
                 _context.Publishers.Remove(publisher);
             }
