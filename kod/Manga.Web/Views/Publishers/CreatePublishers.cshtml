@@ -1,7 +1,7 @@
-﻿@model Manga.Model.Entities.Publisher
+@model Manga.Model.Entities.Publisher
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "CreatePublishers";
 }
 
 <h1>Stwórz</h1>
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="CreatePublishers">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label">Nazwa wydanictwa</label>
