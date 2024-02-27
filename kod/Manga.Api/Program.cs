@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//PodÅ‚Ä…czenie do bazy danych
-//Migracja: Konsola MenadÅ¼era PakietÃ³w -> Api jako startowt -> WybraÄ‡ projekt domyÅ›lny Model -> Add-Migration [nazwa]
+//Pod³¹czenie do bazy danych
+//Migracja: Konsola Menad¿era Pakietów -> Api jako startowt -> Wybraæ projekt domyœlny Model -> Add-Migration [nazwa]
 var connectionString = builder.Configuration.GetConnectionString("AppDbContext");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
