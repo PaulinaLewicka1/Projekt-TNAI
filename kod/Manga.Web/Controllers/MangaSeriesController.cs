@@ -1,4 +1,4 @@
-﻿using Manga.Model;
+using Manga.Model;
 using Manga.Model.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +22,7 @@ namespace Manga.Web.Controllers
             return View(await appDbContext.ToListAsync());
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> DetailsSeries(int? id)
         {
             if (id == null || _context.MangaSeries == null)
             {
@@ -41,7 +41,7 @@ namespace Manga.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Create()
+        public IActionResult CreateSeries()
         {
             ViewData["PublisherId"] = new SelectList(_context.Publishers, "Id", "Name");
             return View();
@@ -50,7 +50,7 @@ namespace Manga.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("Id,Name,SeriesISBN,Completed,PublisherId")] MangaSeries mangaSeries)
+        public async Task<IActionResult> CreateSeries([Bind("Id,Name,SeriesISBN,Completed,PublisherId")] MangaSeries mangaSeries)
         {
             ModelState["Publisher"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
             if (ModelState.IsValid)
@@ -64,7 +64,7 @@ namespace Manga.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> EditSeries(int? id)
         {
             if (id == null || _context.MangaVolumes == null)
             {
@@ -83,7 +83,7 @@ namespace Manga.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,SeriesISBN,Completed,PublisherId")] MangaSeries mangaSeries)
+        public async Task<IActionResult> EditSeries(int id, [Bind("Id,Name,SeriesISBN,Completed,PublisherId")] MangaSeries mangaSeries)
         {
             if (id != mangaSeries.Id)
             {
@@ -116,7 +116,7 @@ namespace Manga.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> DeleteSeries(int? id)
         {
             if (id == null || _context.MangaSeries == null)
             {
@@ -134,7 +134,7 @@ namespace Manga.Web.Controllers
             return View(series);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteSeries")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
