@@ -1,7 +1,7 @@
-﻿@model Manga.Model.Entities.Publisher
+@model Manga.Model.Entities.Publisher
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "DetailsPublishers";
 }
 
 <h1>Szczegóły</h1>
@@ -27,7 +27,7 @@
 <div>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a>
+        <a asp-action="EditPublishers" asp-route-id="@Model?.Id">Edytuj</a>
     }
     <a asp-action="Index">Powrót do listy</a>
 </div>
